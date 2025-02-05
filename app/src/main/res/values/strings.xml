@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">AllInOne</string>
+    <string name="home">Home</string>
+    <string name="recipes">Recipes</string>
+    <string name="shopping_list">Shopping List</string>
+    <string name="storage">Storage</string>
+    <string name="settings">Settings</string>
+
+    <string name="r001s01">Backofen auf 180°C (Ober- und Unterhitze empfohlen) oder 160°C (Umluft) vorheizen.</string>
+    <string name="r001s02">Zerdrückte Bananen, Rapsöl, Sojadrink, Vanilleextrakt und Zimt in einer Schale verrühren.</string>
+    <string name="r001s03">weißen Zucker und braunen Zucker hinzugeben und umrühren.</string>
+    <string name="r001s04">Mehl, Stärke, Natron und Salz dazugeben und gut verrühren.</string>
+    <string name="r001s05">Walnüsse hacken, in den Teig geben und unterheben. Etwas für die Dekoration zur Seite legen.</string>
+    <string name="r001s06">Kastenform (ca. 27x12cm) einfetten und Teig in die Backform geben, mit Walnüssen bestreuen und das Bananenbrot 45\-50 Min. auf mittlerer Schiene backen.</string>
+    <string name="r001s07">Etwas abkühlen lassen und genießen.</string>
+    <string name="r001i01"> </string>
+    <string name="r001i02">3x Bananen, 120ml Rapsöl, 80ml Sojadrink, 2TL Vanilleextrakt, 1TL Zimt (gemahlen)</string>
+    <string name="r001i03">40g Zucker, 30g unraffinierten Rohrzucker</string>
+    <string name="r001i04">190g Weizenmehl (Typ405), 1EL Speisestärke, 1TL Natron, Salz</string>
+    <string name="r001i05">60g Walnusskerne</string>
+    <string name="r001i06"> </string>
+    <string name="r001i07"> </string>
+</resources>
