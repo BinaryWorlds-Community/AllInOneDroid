@@ -11,6 +11,6 @@ data class Recipe(
     @PrimaryKey(autoGenerate = true)
     val id : Int = 0,
     val title : String,
-    val titleImage : Bitmap,
+    val titleImage : String,
     val portionFactor : Int
 )

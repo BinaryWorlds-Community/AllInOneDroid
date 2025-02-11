@@ -8,7 +8,8 @@ import androidx.room.PrimaryKey
 data class RecipeStep(
     @PrimaryKey(autoGenerate = true)
     val id : Int = 0,
+    val orderNo: Int,
     val recipeId : Int,
     val description : String,
-    val image : Bitmap,
+    val image : String,
 )

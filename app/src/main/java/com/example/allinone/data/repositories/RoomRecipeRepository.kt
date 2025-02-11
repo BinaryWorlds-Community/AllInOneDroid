@@ -1,33 +1,20 @@
 package com.example.allinone.data.repositories
 
-import android.graphics.Bitmap
+import com.example.allinone.data.AppDatabase
 import com.example.allinone.data.entities.Recipe
 import com.example.allinone.data.entities.RecipeWithSteps
+import com.example.allinone.data.entities.StorageItem
 
-class MockRecipeRepository  : IRepository<RecipeWithSteps> {
+class RoomRecipeRepository(private val database: AppDatabase) : IRepository<RecipeWithSteps> {
+    private var items = mutableListOf<RecipeWithSteps>()
 
-    private val mockIngredientRepository = MockIngredientRepository()
     override suspend fun getAll(): Iterable<RecipeWithSteps> {
-        TODO("Not yet implemented")
+        items = database.recipeDao().getAllRecipes()
+        return items
     }
 
     override fun getOne(): RecipeWithSteps {
-        val w: Int = 10
-        val h: Int = 10
-
-        val conf = Bitmap.Config.ARGB_8888 // see other conf types
-
-        val bmp = Bitmap.createBitmap(w, h, conf)
-
-        var recipe = RecipeWithSteps(
-                recipe = Recipe(
-                    id = 1,
-                    title = "Test",
-                    titleImage = "bmp",
-                    portionFactor = 1),
-                steps = emptyList()
-        )
-        return recipe
+        TODO("Not yet implemented")
     }
 
     override fun getByID(id: Int): RecipeWithSteps? {
@@ -35,10 +22,6 @@ class MockRecipeRepository  : IRepository<RecipeWithSteps> {
     }
 
     override fun getByName(name: String): RecipeWithSteps? {
-        TODO("Not yet implemented")
-    }
-
-    override fun updateOne(entity: RecipeWithSteps) {
         TODO("Not yet implemented")
     }
 
@@ -55,6 +38,10 @@ class MockRecipeRepository  : IRepository<RecipeWithSteps> {
     }
 
     override fun updateMultiple(entities: Iterable<RecipeWithSteps>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun updateOne(entity: RecipeWithSteps) {
         TODO("Not yet implemented")
     }
 }
