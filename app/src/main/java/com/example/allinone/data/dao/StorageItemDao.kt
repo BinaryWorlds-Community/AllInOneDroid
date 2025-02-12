@@ -12,6 +12,10 @@ import com.example.allinone.data.entities.StorageItem
 interface StorageItemDao{
     @Query("SELECT * FROM storageItems")
     suspend fun getAllStorageItems(): MutableList<StorageItem>
+
+    @Query ("SELECT * FROM storageItems WHERE ingredientName LIKE :query || '%' ORDER BY ingredientName")
+    suspend fun getStorageItemNames(query: String): List<StorageItem>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertStorageItem(storageItem: StorageItem)
     @Update

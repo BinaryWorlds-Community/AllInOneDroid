@@ -39,6 +39,7 @@ import androidx.lifecycle.viewModelScope
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.allinone.App
 import com.example.allinone.R
+import com.example.allinone.data.AppDatabase
 import com.example.allinone.data.entities.StorageItem
 import com.example.allinone.ui.components.*
 import com.example.allinone.ui.theme.AllInOneTheme
@@ -51,9 +52,11 @@ import kotlinx.coroutines.launch
 fun AllInOneStorageScreen(
     modifier: Modifier = Modifier
 ) {
+    val storageItemDao = AppDatabase.getInstance(appContext).storageItemDao()
+
     val viewModel = viewModel<AllInOneViewModel>(
         factory = viewModelFactory {
-            AllInOneViewModel(App.appModule)
+            AllInOneViewModel(App.appModule, storageItemDao)
         }
     )
 
@@ -84,8 +87,8 @@ fun AllInOneStorageScreen(
                     val storageItem = storageItems[it]
                     StorageItemRow(
                         id = storageItem.id,
-                        itemName = viewModel.appModule.ingredientRepo.getByID(storageItem.ingredientId)?.name
-                            ?: "Not Found",
+                        itemName = storageItem.ingredientName, //viewModel.appModule.ingredientRepo.getByID(storageItem.ingredientId)?.name
+                            //?: "Not Found",
                         amount = storageItem.amount,
                         unit = "kg",
                         locationIcon = R.drawable.storage,
@@ -129,7 +132,7 @@ fun AllInOneStorageScreen(
                         )
                         Button(onClick = {
                             viewModel.viewModelScope.launch {
-                                viewModel.addStorageItem(StorageItem(ingredientId = 1, locationId =  1, amount = newStorageItemAmount))
+                                viewModel.addStorageItem(StorageItem(ingredientName = newStorageItemName, amount = newStorageItemAmount))
                             }
                             isDialogOpen = false
                             newStorageItemAmount = 0f

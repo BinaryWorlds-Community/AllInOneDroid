@@ -7,7 +7,8 @@ import androidx.room.PrimaryKey
 data class StorageItem(
     @PrimaryKey(autoGenerate = true)
     val id : Int = 0,
-    val ingredientId: Int,
-    val locationId: Int,
+    val ingredientName : String,
+    //val ingredientId: Int,
+    //val locationId: Int,
     val amount: Float
 )

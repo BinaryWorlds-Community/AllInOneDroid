@@ -4,7 +4,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.room.Room
 import com.example.allinone.data.AllInOneUiState
+import com.example.allinone.data.AppDatabase
+import com.example.allinone.data.dao.StorageItemDao
 import com.example.allinone.data.entities.ShoppingItem
 import com.example.allinone.data.entities.StorageItem
 import com.example.allinone.di.AppModule
@@ -15,7 +18,8 @@ import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 class AllInOneViewModel (
-    val appModule : AppModule
+    val appModule : AppModule,
+    private val storageItemDao: StorageItemDao // might be a better way to provide the dao to the viewmodel...
 ): ViewModel(){
 
    val uiState: StateFlow<AllInOneUiState> =
@@ -30,8 +34,11 @@ class AllInOneViewModel (
        )
 
    private val _storageItem = MutableLiveData<MutableList<StorageItem>>()
+    private val _storageItemSuggestions = MutableLiveData<List<StorageItem>>()
    private val _shoppingItem = MutableLiveData<MutableList<ShoppingItem>>()
+
    val storageItem : LiveData<MutableList<StorageItem>> get() = _storageItem
+    val storageItemSuggestions : LiveData<List<StorageItem>> = _storageItemSuggestions
    val shoppingItem : LiveData<MutableList<ShoppingItem>> get() = _shoppingItem
     fun selectDarkMode(isDarkMode: Boolean) {
         viewModelScope.launch {
@@ -46,6 +53,11 @@ class AllInOneViewModel (
        }
    }
 
+    fun fetchStorageItemSuggestions(query: String) {
+        viewModelScope.launch{
+            _storageItemSuggestions.value = storageItemDao.getStorageItemNames(query)
+        }
+    }
     fun updateStorageItems(newData : MutableList<StorageItem>){
         _storageItem.postValue(newData)
         appModule.storageRepo.updateMultiple(newData.toList())

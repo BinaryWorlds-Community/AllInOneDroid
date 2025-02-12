@@ -5,9 +5,9 @@ import com.example.allinone.data.entities.StorageItem
 class MockStorageItemRepository : IRepository<StorageItem> {
 
     private var items = mutableListOf<StorageItem>(
-        StorageItem(1, 1, 1, 1.5f),
-        StorageItem(2, 1, 2, 1.5f),
-        StorageItem(3, 2, 1, 2.5f)
+        StorageItem(1, "tomato", 1f), //, 1, 1.5f),
+        StorageItem(2, "cucumber", 1f), //, 2, 1.5f),
+        StorageItem(3, "carrot",2f), //, 1, 2.5f)
     )
     override suspend fun getAll(): Iterable<StorageItem> {
         return items

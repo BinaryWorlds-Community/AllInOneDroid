@@ -11,7 +11,7 @@ import com.example.allinone.data.entities.StorageItem
 
 @Database(
     entities = [StorageItem::class, ShoppingItem::class],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
