@@ -1,7 +1,9 @@
 package com.example.allinone.data.repositories
 
+import androidx.lifecycle.viewModelScope
 import com.example.allinone.data.AppDatabase
 import com.example.allinone.data.entities.StorageItem
+import kotlinx.coroutines.launch
 
 class RoomStorageItemRepository(private val database: AppDatabase) : IRepository<StorageItem> {
     private var items = mutableListOf<StorageItem>()
@@ -41,5 +43,9 @@ class RoomStorageItemRepository(private val database: AppDatabase) : IRepository
 
     override fun updateOne(entity: StorageItem) {
         TODO("Not yet implemented")
+    }
+
+    suspend fun fetchStorageItemSuggestions(query: String) {
+        database.storageItemDao().getStorageItemNames(query)
     }
 }

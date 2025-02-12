@@ -19,7 +19,6 @@ import kotlinx.coroutines.launch
 
 class AllInOneViewModel (
     val appModule : AppModule,
-    private val storageItemDao: StorageItemDao // might be a better way to provide the dao to the viewmodel...
 ): ViewModel(){
 
    val uiState: StateFlow<AllInOneUiState> =
@@ -53,11 +52,7 @@ class AllInOneViewModel (
        }
    }
 
-    fun fetchStorageItemSuggestions(query: String) {
-        viewModelScope.launch{
-            _storageItemSuggestions.value = storageItemDao.getStorageItemNames(query)
-        }
-    }
+
     fun updateStorageItems(newData : MutableList<StorageItem>){
         _storageItem.postValue(newData)
         appModule.storageRepo.updateMultiple(newData.toList())

@@ -52,11 +52,9 @@ import kotlinx.coroutines.launch
 fun AllInOneStorageScreen(
     modifier: Modifier = Modifier
 ) {
-    val storageItemDao = AppDatabase.getInstance(appContext).storageItemDao()
-
     val viewModel = viewModel<AllInOneViewModel>(
         factory = viewModelFactory {
-            AllInOneViewModel(App.appModule, storageItemDao)
+            AllInOneViewModel(App.appModule)
         }
     )
 
