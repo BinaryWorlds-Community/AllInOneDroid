@@ -50,4 +50,8 @@ class MockIngredientRepository : IRepository<Ingredient> {
     catch (ex : Exception){
 
     }
+
+    override suspend fun getStorageSuggestions(query:String) : List<Ingredient> {
+        TODO("Not yet implemented")
+    }
 }

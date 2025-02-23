@@ -11,4 +11,6 @@ interface IRepository<T> {
     fun deleteByID(id:Int)
     suspend fun createOne(entity: T)
     fun createMultiple(entities: Iterable<T>)
+
+    suspend fun getStorageSuggestions(query:String): List<T>
 }

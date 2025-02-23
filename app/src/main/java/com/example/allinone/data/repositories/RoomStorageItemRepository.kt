@@ -2,6 +2,7 @@ package com.example.allinone.data.repositories
 
 import androidx.lifecycle.viewModelScope
 import com.example.allinone.data.AppDatabase
+import com.example.allinone.data.dao.StorageItemDao
 import com.example.allinone.data.entities.StorageItem
 import kotlinx.coroutines.launch
 
@@ -45,7 +46,7 @@ class RoomStorageItemRepository(private val database: AppDatabase) : IRepository
         TODO("Not yet implemented")
     }
 
-    suspend fun fetchStorageItemSuggestions(query: String) {
-        database.storageItemDao().getStorageItemNames(query)
+    override suspend fun getStorageSuggestions(query: String) : List<StorageItem> {
+        return database.storageItemDao().getStorageItemNames(query)
     }
 }

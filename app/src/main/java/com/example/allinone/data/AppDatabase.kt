@@ -8,6 +8,7 @@ import com.example.allinone.data.dao.ShoppingItemDao
 import com.example.allinone.data.dao.StorageItemDao
 import com.example.allinone.data.entities.ShoppingItem
 import com.example.allinone.data.entities.StorageItem
+import com.example.allinone.ui.components.StorageItemPreview
 
 @Database(
     entities = [StorageItem::class, ShoppingItem::class],
@@ -34,6 +35,15 @@ abstract class AppDatabase : RoomDatabase() {
                 INSTANCE = instance
                 instance
             }
+        }
+
+        suspend fun populateDatabase(storageItemDao: StorageItemDao) {
+            val storageNames = listOf(
+                "Tomato", "Broccoli", "Carrot", "Corn"
+            )
+            storageItemDao.insertStorageItem(storageItem = )
+
+                storageNames.map { StorageItem(ingredientName = it)})
         }
     }
 }

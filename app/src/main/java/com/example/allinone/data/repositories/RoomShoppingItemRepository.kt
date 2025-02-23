@@ -1,6 +1,7 @@
 package com.example.allinone.data.repositories
 
 import com.example.allinone.data.AppDatabase
+import com.example.allinone.data.Ingredient
 import com.example.allinone.data.entities.ShoppingItem
 
 class RoomShoppingItemRepository(private val database: AppDatabase) : IRepository<ShoppingItem> {
@@ -40,6 +41,10 @@ class RoomShoppingItemRepository(private val database: AppDatabase) : IRepositor
     }
 
     override fun updateOne(entity: ShoppingItem) {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun getStorageSuggestions(query:String) : List<ShoppingItem> {
         TODO("Not yet implemented")
     }
 }

@@ -1,5 +1,6 @@
 package com.example.allinone.data.repositories
 
+import com.example.allinone.data.Ingredient
 import com.example.allinone.data.UserAccount
 
 class MockUserAccountRepository : IRepository<UserAccount>{
@@ -39,6 +40,9 @@ class MockUserAccountRepository : IRepository<UserAccount>{
     }
 
     override fun updateOne(entity: UserAccount) {
+        TODO("Not yet implemented")
+    }
+    override suspend fun getStorageSuggestions(query:String) : List<UserAccount> {
         TODO("Not yet implemented")
     }
 }

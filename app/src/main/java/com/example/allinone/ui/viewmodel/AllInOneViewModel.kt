@@ -52,6 +52,12 @@ class AllInOneViewModel (
        }
    }
 
+    fun fetchSuggestions(query: String) {
+        viewModelScope.launch {
+            _storageItemSuggestions.value = appModule.storageRepo.getStorageSuggestions(query)
+        }
+    }
+
 
     fun updateStorageItems(newData : MutableList<StorageItem>){
         _storageItem.postValue(newData)
@@ -60,7 +66,7 @@ class AllInOneViewModel (
 
     suspend fun updateStorageItem(entry : StorageItem){
         appModule.storageRepo.updateOne(entry)
-        _storageItem.value = appModule.storageRepo. getAll().toMutableList()
+        _storageItem.value = appModule.storageRepo.getAll().toMutableList()
     }
 
     suspend fun addStorageItem(newEntry : StorageItem){
